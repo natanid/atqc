@@ -1,0 +1,53 @@
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+
+public class class1 {
+
+	WebDriver driver;
+
+	@Before
+	public void setUp() {
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() {
+		driver.quit();
+	}
+
+	@Test
+	 public void test1()
+	 {                                                   
+	       
+	 driver.get("http://www.vpl.ca");           
+
+	 WebElement searchField;
+	 searchField = driver.findElement(By.xpath("//input[@id='globalQuery']"));
+	   
+	 searchField.click();         
+	 searchField.sendKeys("java");
+	               
+	 WebElement searchButton;
+	 searchButton = driver.findElement(By.xpath("//input[@class='search_button']"));
+	   
+	 searchButton.click();
+	                                               
+	 WebElement searchResultLink;
+	 searchResultLink = driver.findElement(By.xpath("(//a[@testid='bib_link'])[1]"));
+	               
+	 searchResultLink.click();
+	                               
+	 WebElement bookTitleElement;
+	 bookTitleElement = driver.findElement(By.xpath("//h1[@id='item_bib_title']"));               
+	                      
+	 assertEquals(bookTitleElement.isDisplayed(), true); 
+	 
+	               
+	}}
